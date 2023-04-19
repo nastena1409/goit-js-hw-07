@@ -20,16 +20,16 @@ const galleryEl = createGalleryItems(galleryItems);
 
 galleryList.insertAdjacentHTML('beforeend', galleryEl);
 
-galleryList.addEventListener('click', onGalleryListClick);
+//galleryList.addEventListener('click', onGalleryListClick);
 
-function onGalleryListClick(event) {
+//function onGalleryListClick(event) {
 
-    if (event.target.nodeName !== 'IMG') {
-        return;
-    }
+    //if (event.target.nodeName !== 'IMG') {
+      //  return;
+    //}
 
-    event.preventDefault();
-}
+    //event.preventDefault();
+//}
 
     new SimpleLightbox('.gallery a',
         {

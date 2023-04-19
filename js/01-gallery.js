@@ -22,7 +22,7 @@ function createGalleryItems(galleryItems) {
 
 const galleryList = document.querySelector('.gallery');
 const galleryEl = createGalleryItems(galleryItems);
-console.log(galleryEl)
+//console.log(galleryEl)
 
 galleryList.insertAdjacentHTML('beforeend', galleryEl)
 
@@ -39,18 +39,21 @@ function onGalleryListClick(event) {
     const currentImage = event.target;
 
     const instance = basicLightbox.create(`
-    <img src="${currentImage.dataset.source}" width="800" height="600">
-`)
+    <img src="${currentImage.dataset.source}" width="800" height="600">`,
+        {
+        onShow: () => window.addEventListener("keydown", onEscapePress),
+        onClose: () => window.removeEventListener("keydown", onEscapePress)
+        })
+    
     instance.show();
-
-    window.addEventListener("keydown", onEscapePress);
-
-    function onEscapePress(event) {
-        if (event.code === "Escape") {
-            instance.close(); 
-        }
-    }
-   
+    
+    function onEscapePress(keydown) {
+        if (keydown.code === "Escape") {
+           instance.close() 
+        }       
+    }    
 }
+
+
 
     
